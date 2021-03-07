@@ -20,7 +20,7 @@ class CustomUserAdmin(UserAdmin):
     """ User model admin """
 
     inlines = (ProfileInline,)
-    list_display = ('email', 'username', 'first_name', 'last_name', 'is_staff', 'is_client')
+    list_display = ('email', 'username', 'first_name', 'last_name', 'is_staff', 'is_client', 'is_verified')
     list_filter = ('is_client', 'is_staff', 'created', 'modified')
 
 
