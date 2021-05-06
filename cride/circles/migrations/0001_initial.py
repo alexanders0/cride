@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
                 ('modified', models.DateTimeField(auto_now=True, help_text='Date time on wich the object was last modified.', verbose_name='modified at')),
                 ('is_admin', models.BooleanField(default=False, help_text="Circles admins can update de circle's data and manage its members.", verbose_name='circle_admin')),
                 ('used_invitations', models.PositiveSmallIntegerField(default=0)),
-                ('remaining_invitations', models.PositiveSmallIntegerField(default=0)),
+                ('remaining_invitations', models.PositiveSmallIntegerField(default=5)),
                 ('rides_taken', models.PositiveIntegerField(default=0)),
                 ('rides_offered', models.PositiveIntegerField(default=0)),
                 ('is_active', models.BooleanField(default=True, help_text='Only active users are allowed to interact in the circle.', verbose_name='active status')),
