@@ -8,8 +8,11 @@ from django.utils import timezone
 
 # Models
 from cride.users.models import User
+from cride.rides.models import Ride
 
 # Celery
+from cride.taskapp.celery import app
+from celery import shared_task
 from celery.decorators import task
 
 # Utilities
@@ -47,3 +50,26 @@ def send_confirmation_email(user_pk):
     msg = EmailMultiAlternatives(subject, content, from_email, [user.email])
     msg.attach_alternative(content, "text/html")
     msg.send()
+
+
+@shared_task(name='disable_finished_rides')
+def disable_finished_rides():
+    """ Disable finished rides """
+    now = timezone.now()
+    offset = now + timedelta(seconds=5)
+
+    # Update rides that have already finished
+    rides = Ride.objects.filter(
+        arrival_date__gte=now,
+        arrival_date__lte=offset,
+        is_active=True
+    )
+    rides.update(is_active=False)
+
+
+app.conf.beat_schedule = {
+    'disable-finished-rides': {
+        'task': 'disable_finished_rides',
+        'schedule': 10
+    }
+}

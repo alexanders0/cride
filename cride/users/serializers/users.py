@@ -20,7 +20,6 @@ from cride.taskapp.tasks import send_confirmation_email
 from cride.users.serializers.profiles import ProfileModelSerializer
 
 # Utilities
-from datetime import timedelta
 import jwt
 
 
