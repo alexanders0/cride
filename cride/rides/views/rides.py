@@ -1,7 +1,6 @@
 """ Rides views """
 
 # Django REST Framework
-from cride.rides import serializers
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404

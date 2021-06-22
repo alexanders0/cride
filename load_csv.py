@@ -1,5 +1,8 @@
 import csv
 
+# Model
+from cride.circles.models import Circle
+
 
 def import_csv(csv_filename):
     """ Function to load Circles through csv file """

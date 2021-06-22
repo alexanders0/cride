@@ -1,8 +1,6 @@
 """ Users views """
 
 # Django REST Framework
-from cride.circles import permissions
-from cride.circles import serializers
 from rest_framework import mixins, status,  viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
